@@ -41,3 +41,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 3732971915
+    locked: 0
+  - name: Details
+    uniqueID: 2041572495
+    locked: 0
+  - name: Obstacles
+    uniqueID: 371220179
+    locked: 0
+  - name: Player
+    uniqueID: 1260637363
+    locked: 0
+  - name: Items
+    uniqueID: 2721485667
+    locked: 0
+  - name: Bullets
+    uniqueID: 1247097137
+    locked: 0
+  - name: FX
+    uniqueID: 769256019
+    locked: 0
+  - name: UI
+    uniqueID: 3619755207
+    locked: 0
