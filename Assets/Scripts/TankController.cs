@@ -17,10 +17,7 @@ public class TankController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void HandleShoot()
-    {
-        Debug.Log("Shooting test");
-    }
+  
 
     public void HandleMoveBody(Vector2 movementVector)
     {
