@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class TurretShooter : MonoBehaviour
 {
-    [SerializeField] private string turretName = "Turret"; // Optional for identification
     [SerializeField] private float fireCooldown = 1f;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform[] shootPoints; // Assign Barrel1, Barrel2, etc.
 
     private float fireTimer;
 
@@ -14,7 +12,15 @@ public class TurretShooter : MonoBehaviour
     {
         if (Time.time < fireTimer) return;
 
+        foreach (Transform shootPoint in shootPoints)
+        {
+            if (!shootPoint.gameObject.activeInHierarchy) continue;
+
+            GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+            bullet.GetComponent<Bullet>().Initialise();
+        }
+
         fireTimer = Time.time + fireCooldown;
-        Debug.Log($"{turretName} fired at {Time.time}");
     }
 }
+
