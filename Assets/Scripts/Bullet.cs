@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
+    public int bulletDamage = 10;
     private Rigidbody2D rb;
     private float maxDistance = 10f;
     private Vector2 startPosition;
@@ -31,8 +32,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Obstacles")) 
+        Debug.Log(collision.name);
+
+        if ( collision.CompareTag("Obstacles")) 
         {
+            Destroy(gameObject);
+        }
+        if (collision.CompareTag("Enemy"))
+        {
+            var damageable = collision.GetComponent<Damageable>();
+            damageable.TakeDamage(bulletDamage);
             Destroy(gameObject);
         }
     }
