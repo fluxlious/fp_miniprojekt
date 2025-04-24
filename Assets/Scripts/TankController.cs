@@ -1,40 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class TankController : MonoBehaviour
-{
-    public Rigidbody2D rb;
-    private Vector2 movementVector;
-    public float maxSpeed = 10;
-    public float rotationSpeed = 100;
-    [SerializeField]  public float movementSmoothness = 0.1f; // How heavy/smooth the tank feels
-
-    private Vector2 currentVelocity = Vector2.zero;
-
-    private void Awake()
+using UnityEngine.Events;
+ public class TankMover : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
+        public Rigidbody2D rb2d;
+
+        public TankMovementData movementData;
+
+        private Vector2 movementVector;
+        private float currentSpeed = 0;
+        private float currentForewardDirection = 1;
+
+        public UnityEvent<float> OnSpeedChange = new UnityEvent<float>();
+
+        private void Awake()
+        {
+            rb2d = GetComponentInParent<Rigidbody2D>();
+        }
+
+        public void Move(Vector2 movementVector)
+        {
+            this.movementVector = movementVector;
+            CalculateSpeed(movementVector);
+            OnSpeedChange?.Invoke(this.movementVector.magnitude);
+            if (movementVector.y > 0)
+            {
+                if (currentForewardDirection == -1)
+                    currentSpeed = 0;
+                currentForewardDirection = 1;
+            }
+            else if (movementVector.y < 0)
+            {
+                if (currentForewardDirection == 1)
+                    currentSpeed = 0;
+                currentForewardDirection = -1;
+            }
+
+        }
+
+        private void CalculateSpeed(Vector2 movementVector)
+        {
+            if (Mathf.Abs(movementVector.y) > 0)
+            {
+                currentSpeed += movementData.acceleration * Time.deltaTime;
+            }
+            else
+            {
+                currentSpeed -= movementData.decceleration * Time.deltaTime;
+            }
+            currentSpeed = Mathf.Clamp(currentSpeed, 0, movementData.maxSpeed);
+        }
+
+        private void FixedUpdate()
+        {
+            rb2d.velocity = (Vector2)transform.up * currentSpeed * currentForewardDirection * Time.fixedDeltaTime;
+            rb2d.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -movementVector.x * movementData.rotationSpeed * Time.fixedDeltaTime));
+        }
     }
 
-  
 
-    public void HandleMoveBody(Vector2 movementVector)
-    {
-        this.movementVector = movementVector;
-    }
-
-    private void FixedUpdate()
-    {
-        // Target velocity based on current forward direction
-        Vector2 targetVelocity = (Vector2)transform.up * movementVector.y * maxSpeed * Time.fixedDeltaTime;
-
-
-        currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, movementSmoothness);
-        rb.velocity = currentVelocity;
-
-        // Rotate tank based on horizontal input
-        float rotationAmount = -movementVector.x * rotationSpeed * Time.fixedDeltaTime;
-        rb.MoveRotation(rb.rotation + rotationAmount);
-    }
-}
