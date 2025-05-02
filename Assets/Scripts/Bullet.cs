@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
         }
         if (collision.CompareTag("Enemy"))
         {
-            var damageable = collision.GetComponent<Damageable>();
+            var damageable = collision.GetComponentInParent<Damageable>();
             damageable.TakeDamage(bulletDamage);
             Destroy(gameObject);
         }

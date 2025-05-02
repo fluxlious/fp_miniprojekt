@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 8891010964023275245}
   - component: {fileID: 8208358787810737679}
   - component: {fileID: 743416648823759009}
-  - component: {fileID: 1240524293765653951}
   m_Layer: 0
   m_Name: TankBody
   m_TagString: Untagged
@@ -205,44 +204,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.6657703, y: 0.6826524}
   m_Direction: 0
---- !u!114 &1240524293765653951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4451266079034642489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56467e65e5d68884d93b4fa212a09fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 100
-  OnDead:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7501209649047890616}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnHit:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHeal:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &7422334814900104857
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +294,7 @@ Transform:
   m_GameObject: {fileID: 7501209649047890616}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.979, y: -0.18, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
