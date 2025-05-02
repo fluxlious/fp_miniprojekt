@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6918401507508353204}
   - component: {fileID: 8058218681115024139}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TankBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8891010964023275245}
   - component: {fileID: 8208358787810737679}
   - component: {fileID: 743416648823759009}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TankBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 6763559982119242634}
   - component: {fileID: 7773025750504077368}
   - component: {fileID: 1930745603156735405}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TankTurretParent
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 7173192598939267156}
   - component: {fileID: 8697461655484980303}
   - component: {fileID: 7470272467373379403}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
